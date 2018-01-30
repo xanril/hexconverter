@@ -12,37 +12,37 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText1"
+        android:id="@+id/hexValueEditText"
         android:hint="FFFFFF" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button1"
+        android:id="@+id/calculateButton"
         android:text="Convert" />
     <TextView
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
+        android:id="@+id/redTextView"
         android:text="255"
         android:textColor="#ffff0000" />
     <TextView
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView3"
+        android:id="@+id/greenTextView"
         android:text="255"
-        android:textColor="#ff0092ff" />
+        android:textColor="#ff27ff00" />
     <TextView
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView4"
+        android:id="@+id/blueTextView"
         android:text="255"
-        android:textColor="#ff00ff20" />
+        android:textColor="#ff00a6ff" />
     <View
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/view1"
+        android:id="@+id/colorView"
         android:background="#ffffffff" />
 </LinearLayout>
