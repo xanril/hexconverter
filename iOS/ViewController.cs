@@ -8,6 +8,8 @@ namespace HexConverter.iOS
     {
         int count = 1;
 
+        private HexadecimalConverter hexaConverter;
+
         public ViewController(IntPtr handle) : base(handle)
         {
         }
@@ -16,19 +18,45 @@ namespace HexConverter.iOS
         {
             base.ViewDidLoad();
 
-            // Perform any additional setup after loading the view, typically from a nib.
-            Button.AccessibilityIdentifier = "myButton";
-            Button.TouchUpInside += delegate
-            {
-                var title = string.Format("{0} clicks!", count++);
-                Button.SetTitle(title, UIControlState.Normal);
-            };
+            this.Initialize();
+            this.AssignCallbacks();
         }
 
         public override void DidReceiveMemoryWarning()
         {
             base.DidReceiveMemoryWarning();
             // Release any cached data, images, etc that aren't in use.		
+        }
+
+        private void Initialize()
+        {
+            hexaConverter = new HexadecimalConverter();
+
+            RedLabel.Text = "000";
+            GreenLabel.Text = "000";
+            BlueLabel.Text = "000";
+
+            HexTextField.Text = "";
+
+            ConvertedColorView.BackgroundColor = new UIColor(1.0f, 1.0f, 1.0f, 1.0f);
+        }
+
+        private void AssignCallbacks()
+        {
+            ConvertButton.TouchUpInside += (object sender, EventArgs e) => 
+            {
+                this.HexTextField.ResignFirstResponder();
+                this.hexaConverter.AssignHexValue(this.HexTextField.Text);
+
+                RedLabel.Text = this.hexaConverter.RedDecimal + "";
+                GreenLabel.Text = this.hexaConverter.GreenDecimal + "";
+                BlueLabel.Text = this.hexaConverter.BlueDecimal + "";
+
+                ConvertedColorView.BackgroundColor = new UIColor(hexaConverter.RedDecimal / 255.0f,
+                                                                 hexaConverter.GreenDecimal / 255.0f,
+                                                                 hexaConverter.BlueDecimal / 255.0f,
+                                                                 1.0f);
+            };
         }
     }
 }
